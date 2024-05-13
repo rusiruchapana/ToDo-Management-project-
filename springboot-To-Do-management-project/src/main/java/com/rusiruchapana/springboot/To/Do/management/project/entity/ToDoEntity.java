@@ -25,7 +25,7 @@ public class ToDoEntity {
 
     @Column(nullable = false)
     private String description;
-    
+
     private Boolean completed;
 
 }
