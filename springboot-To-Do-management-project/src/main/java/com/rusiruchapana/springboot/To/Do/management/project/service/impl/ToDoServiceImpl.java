@@ -9,6 +9,9 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static java.lang.System.in;
 
 @AllArgsConstructor
@@ -41,5 +44,11 @@ public class ToDoServiceImpl implements ToDoService {
         ToDoEntity toDoEntity = toDoRepository.findById(userId).orElseThrow(()-> new ResourcesNotFoundException("The give id is not in the database."));
         ToDoDto toDoDto = modelMapper.map(toDoEntity , ToDoDto.class);
         return toDoDto;
+    }
+
+    @Override
+    public List<ToDoDto> getAllToDo() {
+        List<ToDoEntity> toDoEntityList = toDoRepository.findAll();
+        return toDoEntityList.stream().map((toDos)-> modelMapper.map(toDos , ToDoDto.class)).collect(Collectors.toList());
     }
 }

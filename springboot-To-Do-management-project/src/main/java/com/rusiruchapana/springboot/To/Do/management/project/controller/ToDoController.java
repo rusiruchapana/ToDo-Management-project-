@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/todocontroller")
 @AllArgsConstructor
@@ -25,6 +27,17 @@ public class ToDoController {
         ToDoDto toDoDto = toDoService.getToDo(userId);
         return new ResponseEntity<>(toDoDto , HttpStatus.OK);
     }
+
+    @GetMapping("/findalldto")
+    public ResponseEntity<List<ToDoDto>> findAllDto(){
+        List<ToDoDto> dtos = toDoService.getAllToDo();
+        return new ResponseEntity<>(dtos , HttpStatus.OK);
+    }
+
+
+
+
+
 
 
 }
