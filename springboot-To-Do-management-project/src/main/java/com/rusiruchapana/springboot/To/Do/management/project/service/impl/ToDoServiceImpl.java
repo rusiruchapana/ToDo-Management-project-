@@ -63,4 +63,10 @@ public class ToDoServiceImpl implements ToDoService {
 
         return modelMapper.map(toDoEntity , ToDoDto.class);
     }
+
+    @Override
+    public void deleteToDo(Long userId) {
+        toDoRepository.findById(userId).orElseThrow(()-> new ResourcesNotFoundException("The id is not found in the databaase."));
+        toDoRepository.deleteById(userId);
+    }
 }

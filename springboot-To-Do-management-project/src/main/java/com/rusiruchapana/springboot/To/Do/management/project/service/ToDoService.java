@@ -9,7 +9,7 @@ public interface ToDoService {
     public ToDoDto getToDo(Long userId);
     public List<ToDoDto> getAllToDo();
     public ToDoDto updateToDo(ToDoDto toDoDto , Long id);
-
+    public void deleteToDo(Long userId);
 
 
 }
