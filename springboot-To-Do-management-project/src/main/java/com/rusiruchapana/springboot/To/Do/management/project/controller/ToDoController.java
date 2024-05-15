@@ -41,7 +41,7 @@ public class ToDoController {
     }
 
     @DeleteMapping("/deletetodo/{id}")
-    public ResponseEntity<String> deleteToDo(@PathVariable Long userId){
+    public ResponseEntity<String> deleteToDo(@PathVariable("id") Long userId){
         toDoService.deleteToDo(userId);
         return ResponseEntity.ok("Deleted succesfully");
     }
