@@ -79,4 +79,13 @@ public class ToDoServiceImpl implements ToDoService {
         return modelMapper.map(toDoEntity1 , ToDoDto.class);
 
     }
+
+    @Override
+    public ToDoDto inCompleteToDo(Long userId) {
+        ToDoEntity toDoEntity = toDoRepository.findById(userId).orElseThrow(()-> new ResourcesNotFoundException("The id is not in the database."));
+        toDoEntity.setCompleted(Boolean.FALSE);
+        ToDoEntity toDoEntity1 = toDoRepository.save(toDoEntity);
+
+        return modelMapper.map(toDoEntity1 , ToDoDto.class);
+    }
 }

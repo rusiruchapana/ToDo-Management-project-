@@ -52,5 +52,9 @@ public class ToDoController {
         return new  ResponseEntity<>(toDoDto , HttpStatus.OK);
     }
 
-
+    @PatchMapping("/in-complete-todo/{id}")
+    public ResponseEntity<ToDoDto> inCompleteToDo(@PathVariable("id") Long toDoId){
+        ToDoDto toDoDto = toDoService.inCompleteToDo(toDoId);
+        return new ResponseEntity<>(toDoDto , HttpStatus.OK);
+    }
 }

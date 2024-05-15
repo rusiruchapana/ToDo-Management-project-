@@ -11,5 +11,6 @@ public interface ToDoService {
     public ToDoDto updateToDo(ToDoDto toDoDto , Long id);
     public void deleteToDo(Long userId);
     public ToDoDto completeToDo(Long userId);
+    public ToDoDto inCompleteToDo(Long userId);
 
 }
