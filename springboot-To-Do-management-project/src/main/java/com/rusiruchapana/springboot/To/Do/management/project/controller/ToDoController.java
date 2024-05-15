@@ -43,10 +43,14 @@ public class ToDoController {
     @DeleteMapping("/deletetodo/{id}")
     public ResponseEntity<String> deleteToDo(@PathVariable("id") Long userId){
         toDoService.deleteToDo(userId);
-        return ResponseEntity.ok("Deleted succesfully");
+        return new ResponseEntity<>("Deleted succesfully." , HttpStatus.OK);
     }
 
-
+    @PatchMapping("/completetodo/{id}")
+    public ResponseEntity<ToDoDto> completeToDo(@PathVariable("id") Long userId){
+        ToDoDto toDoDto = toDoService.completeToDo(userId);
+        return new  ResponseEntity<>(toDoDto , HttpStatus.OK);
+    }
 
 
 }

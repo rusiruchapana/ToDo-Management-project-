@@ -10,6 +10,6 @@ public interface ToDoService {
     public List<ToDoDto> getAllToDo();
     public ToDoDto updateToDo(ToDoDto toDoDto , Long id);
     public void deleteToDo(Long userId);
-
+    public ToDoDto completeToDo(Long userId);
 
 }
