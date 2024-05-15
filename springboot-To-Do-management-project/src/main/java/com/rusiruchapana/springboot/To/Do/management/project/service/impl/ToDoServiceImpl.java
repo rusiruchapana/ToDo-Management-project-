@@ -51,4 +51,16 @@ public class ToDoServiceImpl implements ToDoService {
         List<ToDoEntity> toDoEntityList = toDoRepository.findAll();
         return toDoEntityList.stream().map((toDos)-> modelMapper.map(toDos , ToDoDto.class)).collect(Collectors.toList());
     }
+
+    @Override
+    public ToDoDto updateToDo(ToDoDto toDoDto, Long id) {
+        ToDoEntity toDoEntity = toDoRepository.findById(id).orElseThrow(()-> new ResourcesNotFoundException("The given id is not in the database."));
+        toDoEntity.setTitle(toDoDto.getTitle());
+        toDoEntity.setDescription(toDoDto.getDescription());
+        toDoEntity.setCompleted(toDoDto.isCompleted());
+
+        toDoRepository.save(toDoEntity);
+
+        return modelMapper.map(toDoEntity , ToDoDto.class);
+    }
 }

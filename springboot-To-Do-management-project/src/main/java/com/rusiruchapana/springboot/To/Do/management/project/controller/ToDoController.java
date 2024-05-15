@@ -34,6 +34,11 @@ public class ToDoController {
         return new ResponseEntity<>(dtos , HttpStatus.OK);
     }
 
+    @PutMapping("/updatetodo/{id}")
+    public ResponseEntity<ToDoDto> updateToDo(@RequestBody ToDoDto toDoDto , @PathVariable("id") Long userId){
+        ToDoDto toDoDto1 = toDoService.updateToDo(toDoDto , userId);
+        return new  ResponseEntity<>(toDoDto1 , HttpStatus.OK);
+    }
 
 
 

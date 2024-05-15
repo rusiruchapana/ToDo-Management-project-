@@ -8,5 +8,8 @@ public interface ToDoService {
     public ToDoDto addToDo(ToDoDto toDoDto);
     public ToDoDto getToDo(Long userId);
     public List<ToDoDto> getAllToDo();
+    public ToDoDto updateToDo(ToDoDto toDoDto , Long id);
+
+
 
 }
